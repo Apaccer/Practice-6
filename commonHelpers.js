@@ -1,0 +1,7 @@
+import{a as u}from"./assets/vendor-a2e8d7fa.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const c of t.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?t.credentials="include":e.crossorigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();function l({title:r,thumbnail:o,price:n}){return`
+  <div class="item">
+    <img class="item-img" src="${o}" alt="picture" />
+        <p class="item-title">${r}</p>
+        <p class="item-price">${n}</p>
+      </div>`}const d=u.create({baseURL:"https://dummyjson.com"});async function a(r){return(await d.get(`/products/${r}`)).data}const i={productsList:document.querySelector("#allProducts"),singleProductForm:document.querySelector("#singleProductForm"),singleProduct:document.querySelector("#singleProduct")};i.singleProductForm.addEventListener("submit",m);async function m(r){r.preventDefault();const o=r.target.elements.id.value.trim();try{const n=await a(o),s=l(n);i.singleProduct.innerHTML=s}catch(n){console.log(n.message)}r.target.reset}
+//# sourceMappingURL=commonHelpers.js.map
